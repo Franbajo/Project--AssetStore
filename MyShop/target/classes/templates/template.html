@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Home</title>
+
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+<link rel="stylesheet" th:href="@{/css/style.css}"/> 
+<link rel="stylesheet" th:href="@{/css/estilos.css}"/>
+<link rel="stylesheet" th:href="@{/css/jqueryTutorial_1.css}"/>
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap.min.css}"/>
+<link rel="stylesheet" th:href="@{/css/dataTables.jqueryui.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Animate.css}">
+<!--  <link rel="stylesheet" th:href="@{/css/signin.css}">-->
+
+
+<!-- <link rel="stylesheet" th:href="@{/css/mdb.min.css}"> -->
+
+<style type="text/css">
+/*.................TEXTURITA DE FONDO....................*/
+body{
+	background-image:url(../images/texturaFondo.png);
+	background-size: 27px 27px;
+	background-repeat: repeat;
+	background-attachment: fixed;
+}
+#hoverPrueba:hover {
+	 -moz-box-shadow: 100 0 10px #ccc;
+      -webkit-box-shadow: 0 0 10px #ccc;
+      box-shadow: 0 0 10px #ccc;
+      transform: scale(1.1);
+	
+}
+
+</style>
+
+ <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+
+</head>
+<!-- BARRA DE NAVEGACIÓN  -->
+	<header id="header" class="headroom fixed-top scrolling-navbar" th:fragment="header">
+
+	
+<nav class="navbar navbar-expand-lg navbar-light bg-dark scrolling-navbar">
+
+	<!-- ....................LOGO.................... -->
+	<a th:href="@{/}" class="navbar-brand animated rubberBand" data-wow-duration="2s" data-wow-delay="1s">
+		<!-- <svg xmlns="http://www.w3.org/2000/svg"_ style="color:white" width="22" height="22" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+	  		<path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+	  		<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+			</svg> -->
+			<img class="card-img-top" src="../images/Icono_mini.png"  height="62" th:href="@{/}">
+	</a>
+	<!-- ............................................. -->
+	<!-- ....................MENÚ DESPLEGABLE.................... -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu de Navegación">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	<!-- ............................................. -->
+	<!-- ............OPCIONES DESPLEGABLES................ -->
+	<div class="collapse navbar-collapse"   id="navbar">
+		
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown">
+				<div class="fm-nav"><!-- Este div NO ES BOOTSTRAP, es uno 
+										inventado para crear el efecto HOVER 
+										sobre las opciones Browse, Tools, etc... El hover es que al pasar el ratón
+										se ilumine la opción... Para terminar de 
+										hacer el hover, es necesario que veas el archivo
+										css estilos, ahí ponemos el hover empleando este div
+										y le ponemos color. -->
+					<center><a href="#" class="nav-link" id="menu-categorias" style="color:white;" 
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse</a>
+					<!--....... BROWSE SUBCATEGORIAS......... -->
+					<div class="dropdown-menu" aria-labelledby="menu-categorias">
+						<a id="hoverPrueba" th:href="@{/assetshelf}" class="dropdown-item">ALL</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='3D')}"  class="dropdown-item"> 3D</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='2D')}" class="dropdown-item">2D</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='Textures')}" class="dropdown-item">Textures & Materials</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='Templates')}" class="dropdown-item">Templates</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='Animations')}" class="dropdown-item">Animations</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='GUI')}" class="dropdown-item">GUI</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='VFX')}" class="dropdown-item">VFX</a>
+						<a id="hoverPrueba" th:href="@{/searchByCategory(category='Audio')}" class="dropdown-item">Audio</a>
+					</div>
+						<!-- ........................... -->
+					</center>
+					</div>
+				</li>
+
+				<li class="nav-item">
+					<div class="fm-nav">
+						<center><a th:href="@{/underConstruction}" class="nav-link" style="color:white">Affiliate</a></center>
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="fm-nav">
+						<center><a sec:authorize="isAnonymous()" th:href="@{/login}" class="nav-link" style="color:white">Publisher Login</a></center>
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="fm-nav">
+						<center><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}" class="nav-link" style="color:white">MY ACCOUNT</a></center>
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="fm-nav">
+						<center><a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="nav-link" style="color:white">LOGOUT</a></center>
+					</div>
+				</li>
+			</ul>
+				
+			<form class="form-inline my-2 my-lg-0" th:action="@{/searchAsset}" method="post" >
+				<a th:href="@{/shoppingCart/cart}" class="navbar-brand">
+					<i type="text" class="fas fa-shopping-cart" style="color: white;"></i>
+				</a>
+				
+							<div class="form-group">
+								<input type="text" name="keyword" class="form-control"
+									placeholder="Asset title" />
+							</div>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			
+			
+<!-- 			<ul class="nav navbar-nav navbar-right"> -->
+<!-- 				<li><a href="#">SHOPPING CART</a></li> -->
+<!-- 				<li><a href="#">MY ACCOUNT</a></li> -->
+<!-- 				<li><a href="#">LOGOUT</a></li> -->
+<!-- 			</ul> -->
+	
+	</div>
+
+	
+		<!-- <div class="row d-none d-lg-block">
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+		</div>
+ 		-->
+</nav>
+<hr style="height:22px;border-width:120;color:gray;background-color:black; opacity: 0.7; position:static; margin-top:0px">
+</header>
+<body>
+
+	
+
+	<!-- CONTENIDO -->
+	<div class="container"></div>
+
+	<!-- PIÉ DE PÁGINA -->
+	<footer th:fragment="footer" class="bg-dark text-center text-white fixed-bottom">
+		
+<!-- 		<div class="row"> -->
+<!-- 				<div class="col"> -->
+<!-- 					<div> -->
+<!-- 						<a th:href="@{/}"><img class="img-responsive" -->
+<!-- 							src="/images/Icono_mini.png"  height="62" width="42" /></a> -->
+<!-- 					</div> -->
+<!-- 					<p> -->
+<!-- 						Asset Store. <br />Serving our customers with the -->
+<!-- 						best. -->
+<!-- 					</p> -->
+<!-- 				</div> -->
+<!-- 				<div class="col"> -->
+<!-- 					<h6>CONTACT</h6> -->
+<!-- 					<ul> -->
+<!-- 						<p> -->
+<!-- 							<i class="fa fa-map-pin"></i> 123 XXX Ave<br /> Málaga, Spain -->
+<!-- 							29002 -->
+<!-- 						</p> -->
+<!-- 						<p> -->
+<!-- 							<i class="fa fa-phone"></i> Phone (Spain) : +1 999 999 9999 -->
+<!-- 						</p> -->
+<!-- 						<p> -->
+<!-- 							<i class="fa fa-envelope"></i> E-mail : info@Assetstore.com -->
+<!-- 						</p> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 				<div class="col"> -->
+<!-- 					<h6>LINKS</h6> -->
+<!-- 					<ul> -->
+<!-- 						<li><a href="#"> Privacy Policy</a></li> -->
+<!-- 						<li><a href="#"> Terms &#38; Conditions</a></li> -->
+<!-- 						<li><a href="#"> Frequently Ask Questions</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 				<div class="col"> -->
+<!-- 					<h6>STORE HOURS</h6> -->
+<!-- 					<div> -->
+<!-- 						<p>Monday - Saturday: 9am - 11pm</p> -->
+<!-- 						<p>Sunday: 10am - 10pm</p> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+		
+			
+		<div class="container">
+				<p>Copyright &copy;2020 </p>
+		</div>
+
+		<script type="text/javascript" th:src="@{/js/jquery-3.5.1.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+		
+		
+		<script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+		
+		<script type="text/javascript" th:src="@{/js/wow.min.js}"></script>
+		
+		
+		<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@10}"></script>
+		<script type="text/javascript" th:src="@{/js/sweetAlert.js}"></script>
+		
+
+	</footer>
+
+
+
+
+
+
+</body>
+</html>

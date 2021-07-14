@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+<meta charset="UTF-8">
+<title>Home</title>
+
+</head>
+<body style="background-color: black;">
+<header th:replace="template :: header"></header>
+<div>
+	<div class="container">
+		<h1 class="animated bounceInLeft"style="padding-top:3em; color:green;"><center>Admin Portal</center></h1>
+		<h3 class="animated bounceInLeft" style="padding-top:3em;">This is the page for asset developers and editors. Here you can upload your creations and put them on sale. </h3>
+	</div>
+</div>
+
+<img class="animated bounceInUp" style="position:absolute; width:100%; z-index:-15; margin-top:-25em;"th:src="@{/images/background2.jpg}"/>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

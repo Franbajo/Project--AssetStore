@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:replace="template :: header"></header>
+
+<div class="container">
+		<div class="row" style="margin-top: 80px;">
+			<div class="col-xs-4 animated bounceInLeft" >
+				<img src="/images/Logo_AssetsGameTek.png" style="width:300px" />
+			</div>
+		</div>
+</div>
+		<hr style="width: 100%; height: 2px; background-color: #333; z-index: -1;" />
+<div class="container animated bounceInUp" style="margin-bottom:5em;">
+<div  style="height:622px;border-width:120;color:gray;background-color:rgba(0, 0, 0, 0.8); position:static; margin-top:0px; ">
+	<form th:action="@{/addNewQuestion}" th:object=${question} method="post">
+
+			<div class="form-group" style="color:white; padding:15px; font-weight: bold;">
+				<label for="newEmail">Your mail address </label>&nbsp;
+					<input required="required" 
+						type="text" class="form-control"
+						id="email" name="email" />
+						<p style="color:#828282;"></p>
+			</div>
+			<div class="form-group" style="color:white; padding:15px; font-weight: bold;">
+				<label for="newUsername">Subject </label>&nbsp;
+					<input required="required" 
+						type="text" class="form-control"
+						id="subject" name="subject" />
+						<p style="color:#828282;"></p>
+			</div>
+	
+		<!-- description -->
+	<div class="form-group">
+						<label style="color:white; font-weight: bold;" class="col control-label" for="contenido">Description</label>
+						<div class="col">
+							<textarea  name="contenido" rows="5" class="form-control" 
+								id="contenido"/></textarea> 
+							<span class="help-block" style="color:white;">Note: Copy/pasted images will disappear from the message after submitted. Please make sure you upload image files.</span>
+						</div>
+		</div>
+			<div  class="form-control-file"  style="margin-top:3em; text-align:center;">
+				<input id="alerta" type="submit" class="btn btn-primary" value="Submit" disabled/>
+			</div>
+	</form>
+
+</div>		
+</div>
+
+
+
+
+<footer th:replace="template :: footer"></footer>
+
+<script type="text/javascript">
+	function habilitar(){
+		email=document.getElementById("email").value;
+		subject=document.getElementById("subject").value;
+	//	contenido=document.getElementById("contenido").value;
+		
+		val=0;
+		
+		if(email==""){
+			val++;
+		}
+		if(subject==""){
+			val++;
+		}
+	//	if(contenido==""){
+	//		val++;
+	//	}
+		if(val==0){
+			document.getElementById("alerta").disabled=false;
+		}else{
+			document.getElementById("alerta").disabled=true;
+		}
+	}
+	
+	document.getElementById("email").addEventListener("keyup", habilitar);
+	document.getElementById("subject").addEventListener("keyup", habilitar);
+	//document.getElementById("contenido").addEventListener("keyup", habilitar);
+	document.getElementById("alerta").addEventListener("click", ()=>{
+	  			alert("¡Pregunta enviada correctamente!");
+	});
+	
+
+
+
+</script>
+
+</body>
+</html>

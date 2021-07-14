@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+/*Esto es para el que te siga el cursor*/
+#sigueme{
+	
+	width:55px;
+	height:50px;
+	position:absolute;
+	/*display:url(images/player.png);*/
+	background:url(/images/player.png);
+	opacity:1;
+	/*border-radius:999px;*/
+}

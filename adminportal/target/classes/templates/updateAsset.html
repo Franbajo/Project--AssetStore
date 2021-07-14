@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+legend {
+  display: block;
+  padding-left: 14px;
+  padding-right: 14px;
+  border: none;
+}
+
+</style>
+
+
+</head>
+<body>
+<header th:replace="template :: header"></header>
+
+	<div class="container" style="padding-top:3em; padding-bottom:8em;">
+		<div class="row">
+				 <form class="form-horizontal" th:action="@{/updateAsset}" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<legend class="col">Update Asset Information <span style="font-size:small">* is a required field</span></legend>
+					<hr>
+					
+					<input hidden="hidden" name="id" th:value="${asset.id}"/>
+					
+					<!-- Title -->
+					  <div class="form-group">
+					    <label style="font-weight: bold;"for="title">Title *</label>
+					    <input type="text" class="form-control" id="title" th:field="*{asset.title}" required="required"
+					    placeholder="Title" />
+					    <span class="help-block">Title of the asset</span>
+					  </div>
+					<!-- Author -->
+					  <div class="form-group">
+					    <label style="font-weight: bold;" for="author">Author *</label>
+					    <input type="text" class="form-control" id="author" th:field="*{asset.author}" required="required"
+					    placeholder="Author" />
+					    <span class="help-block">Author of the asset</span>
+					  </div>
+					<!-- Publisher -->
+					  <div class="form-group">
+					    <label style="font-weight: bold;" for="publisher">Publisher</label>
+					    <input type="text" class="form-control" id="publisher" th:field="*{asset.publisher}" required="required"
+					    placeholder="Publisher" />
+					    <span class="help-block">Publisher of the asset</span>
+					  </div>
+					<!-- Publication Date -->
+					  <div class="form-group">
+					    <label style="font-weight: bold;" for="prublicationDate">Publication Date</label>
+					    <input type="text" class="form-control" id="prublicationDate" th:field="*{asset.prublicationDate}" required="required"
+					    placeholder="prublicationDate" />
+					    <span class="help-block">Publication Date of the asset</span>
+					  </div>
+					<!-- Category -->
+					  <div class="form-group">
+						<label style="font-weight: bold;" class="control-label" for="category">
+							Category *</label>
+						<div class="col-md-8">
+							<select th:value="${asset.category}" id="category" name="category"
+								class="form-control">
+								<option value="" selected="selected" disabled="disabled">Please
+									select an option...</option>
+								<option value="3D"
+									th:selected="(${asset.category}=='3D')">3D</option>
+								<option value="2D"
+									th:selected="(${asset.category}=='2D')">2D</option>
+								<option value="Textures &amp; Materials"
+									th:selected="(${asset.category}=='Textures &amp; Materials')">Textures & Materials</option>
+								<option value="Templates"
+									th:selected="(${asset.category}=='Templates')">Templates</option>
+								<option value="Animations"
+									th:selected="(${asset.category}=='Animations')">Animations</option>
+								<option value="GUI"
+									th:selected="(${asset.category}=='GUI')">GUI</option>
+								<option value="VFX"
+									th:selected="(${asset.category}=='VFX')">VFX</option>
+								<option value="Audio"
+									th:selected="(${asset.category}=='Audio')">Audio</option>
+							</select>
+						</div>
+					</div>
+					<!-- Size -->  
+					  <div class="form-group">
+						<label style="font-weight: bold;" class="control-label" for="tamanio">File Size</label>
+
+						<div class="col-md-8">
+							<input type="number" name="tamanio" class="form-control"
+								id="tamanio" th:field="*{asset.tamanio}"
+								placeholder="File Size"/> <span class="help-block"></span>
+						</div>
+					</div>
+					<!-- shipping weight -->
+					<div class="form-group">
+						<label style="font-weight: bold;" class="control-label" for="shippingWeight">Shipping
+							Weight</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input th:field="*{asset.shippingWeight}" type="number" step="0.01"
+									name="shippingWeight" class="form-control" id="shippingWeight"
+									placeholder="Shipping Weight" /> <span
+									class="input-group-addon">Ounces</span>
+							</div>
+							<span class="help-block">Shipping Weight of the asset</span>
+						</div>
+					</div>
+					
+					<!-- list price -->
+					<div class="form-group">
+						<label style="font-weight: bold;" class="control-label" for="listPrice">List
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								 <input
+									th:field="*{asset.listPrice}" type="number" name="listPrice" step="0.01"
+									class="form-control" id="listPrice" placeholder="List Price" /><span class="input-group-addon">$</span>
+							</div>
+							<span class="help-block">List price of the asset</span>
+						</div>
+					</div>
+					
+					<!-- our price -->
+					<div class="form-group">
+						<label style="font-weight: bold;" class="control-label" for="ourPrice">Our
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								 <input
+									th:field="*{asset.ourPrice}" type="number" name="ourPrice" step="0.01"
+									class="form-control" id="ourPrice" placeholder="Our Price" /><span class="input-group-addon">$</span>
+							</div>
+							<span class="help-block">Our price of the Asset</span>
+						</div>
+					</div>
+					
+					<!-- in stock number -->
+					<div class="form-group">
+						<label style="font-weight: bold;" class="control-label" for="inStockNumber">Number
+							in stock</label>
+						<div class="col-md-8">
+							<input th:field="*{asset.inStockNumber}" type="number"
+								name="inStockNumber" class="form-control" id="inStockNumber"
+								placeholder="Number of in-stock copies" /> <span
+								class="help-block">Number of in-stock copies</span>
+						</div>
+					</div>
+					
+					<!-- status of Asset -->
+					<div class="form-group">
+						<label style="font-weight: bold;" class="col-md-2 control-label" for="status">Status
+						
+						</label>	 <span class="help-block">Whether the asset is
+								active or inactive</span>
+						<div class="col-md-8">
+							<label><input class="input-group-text" value="true" type="radio" name="active"
+								th:checked="${asset.active}" /> Active </label> <label style="padding-left:65px;">
+								<input class="input-group-text"
+								value="false" type="radio" name="active" th:checked="${!asset.active}"/>
+								Inactive 
+
+								</label>
+
+						</div>
+					</div>
+					<!-- description -->
+					<div class="form-group">
+						<label style="font-weight: bold;" class="col control-label" for="description">Description</label>
+						<div class="col">
+							<textarea name="description" rows="5" class="form-control" 
+								id="description" th:field="*{asset.description}" 
+							placeholder="Description" /></textarea> 
+							<span class="help-block">Description of the book</span>
+						</div>
+					</div>
+					<!-- upload image -->
+					<div class="form-group">
+						<div class="col">
+							<label style="font-weight: bold;" for="assetImage">Upload book image</label>
+						</div>
+						<div class="col-md-8">
+							<input id="assetImage" type="file" name="assetImage"
+								th:field="*{asset.assetImage}" />
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success" >Update Asset</button>
+							<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+				</form>
+		</div>
+	</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

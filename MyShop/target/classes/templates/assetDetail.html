@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="template :: header"></header>
+	<div class="container">
+		<div class="col" style="padding-top: 7em;">
+			<h2 class="section-headLine">
+				<h2 class="section-headLine animated bounceInDown">
+					<span
+						th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Assets'"></span>
+				</h2>
+			</h2>
+		</div>
+		<hr style="border-top: 1px solid red; width:100%;">
+
+
+		<!-- <div class="container" style="padding-bottom:150px"> -->
+		<!-- ...................ESTO ES PARTE DEL MÉTODO QUE NO FUNCIONA BIEN, QUITAR SI PONGO EL SHOPPING CART.............. -->
+<form th:action="@{/shoppingCart/addItem}" method="post">
+			<!-- ESTE ES EL QUE TENEMOS QUE SUSTITUIR -->
+			<div class="row" style="padding-bottom:1em; padding-left:1em;">
+				<a class="btn btn-warning animated bounceInRight" th:href="@{/assetshelf}" >Back to Asset list</a>
+			</div>
+			<div class="row">
+		
+<!-- 					<div class="form-group"> -->
+<!-- 							<div class="col-xs-6" style="margin:1em"> -->
+<!-- 								<label for="id">Id</label> -->
+<!-- 										<input type="text" class="form-control" id="id" name="id" th:value="${asset.id}" /> -->
+<!-- 							</div> -->
+<!-- 					</div> -->
+			
+				<div class="col-12 col-md-7">
+<!-- 					...................ESTE COL ES PARA EL CAROUSEL.................... -->
+
+					<div class="carousel slide" id="slideshow" data-ride="carousel">
+					
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img class="img-responsive shelf-asset"
+									th:src="#{adminPath}+@{/images/asset/}+${asset.id}+'.png'"
+									style="padding-bottom: 1em;" />
+
+							</div>
+							<div class="carousel-item ">
+								<img class="img-responsive shelf-asset"
+									th:src="#{adminPath}+@{/images/asset/}+${asset.id}+'.png'"
+									style="padding-bottom: 1em;" />
+
+							</div>
+							<div class="carousel-item">
+								<img class="img-responsive shelf-asset"
+									th:src="#{adminPath}+@{/images/asset/}+${asset.id}+'.png'"
+									style="padding-bottom: 1em;" />
+
+							</div>
+						</div>
+<!-- 						Controladores -->
+						<a href="#slideshow" class="carousel-control-prev"
+							data-slide="prev"> <span class="carousel-control-prev-icon"
+							aria-hidden="true"></span>
+						</a> <a href="#slideshow" class="carousel-control-next"
+							data-slide="next"> <span class="carousel-control-next-icon"
+							aria-hidden="true"></span>
+						</a>
+<!-- 					Indicadores -->	
+						<ol class="carousel-indicators">
+							<li data-target="#slideshow" data-slide-to="0" class="active"></li>
+							<li data-target="#slideshow" data-slide-to="1"></li>
+							<li data-target="#slideshow" data-slide-to="2"></li>
+						</ol>
+					</div>
+					<div class="container" style="padding-bottom: 100px">
+					<div  style="height:100%;border-width:120;background-color:rgba(255, 255, 255, 1); margin-top:1em; position:static; padding:1em;  width: 100%;">
+						<strong>DESCRIPTION </strong>
+						<p th:utext="${asset.description}"></p>
+					</div>	
+					</div>
+				</div>
+
+<!-- 				............................................................................... -->
+		<div class="col-12 col-md-5">
+		<div  style="height:10em;border-width:120;background-color:rgba(255, 255, 255, 1); margin-top:1em; position:static; padding:1em;  width: 113%;">
+			<img class="fotoPerfil" src="/images/BlueFrog.png"
+						style="width: 50px; height: 50px;"/>
+<!-- 					<h1 th:text="${asset.id}">HOLA</h1> -->
+			<p ><input type="hidden" th:value="${asset.id}" name="id" /></p> 
+<!-- 					<h3 th:text="${asset.title}">Asset Title</h3> -->
+			<p style="padding-bottom:2%"><strong>Tittle: </strong><input type="hidden" th:value="${asset.title}" name="title" />
+				<span th:text="${asset.title}"></span>
+			</p> 
+
+		
+<!-- 					<p style="padding-top: 20px"> -->
+<!-- 					<strong>Author:	</strong><span th:text="${asset.author}" display="hidden"></span> -->
+<!-- 					</p> -->
+					<p  style="padding-bottom:2%"><strong>Author: </strong><input type="hidden" th:value="${asset.author}" name="author"/><span th:text="${asset.author}"></span></p> 
+							
+<!-- 					<p> -->
+<!-- 						<strong>Publisher: </strong><span th:text="${asset.publisher}"></span> -->
+<!-- 					</p> -->
+				 <p  style="padding-bottom:2%"><strong>Publisher: </strong><input type="hidden" th:value="${asset.publisher}" name="publisher"/><span th:text="${asset.publisher}"></p> 
+		</div>
+					<table class="table table-light" style="margin-bottom: 100px">
+						<thead style="visibility: hidden;">
+							<tr>
+								<th scope="col">No se ve</th>
+								<th scope="col">No se ve</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">License agreement</th>
+								<td style="color: blue">Standard Asset Store EULA</td>
+							</tr>
+							<tr>
+								<th scope="row">License type</th>
+								<td style="color: blue">Single Entity</td>
+							</tr>
+							<tr>
+<!-- 								<th scope="row">File size</th> -->
+<!-- <!-- 								<td><span th:text="${asset.tamanio}"></span> MB</td> --> 
+<!-- 								<p>Size: <input type="hidden" th:value="${asset.tamanio}" name="tamanio"/><span th:text="${asset.tamanio}"><span></span></p>  -->
+<!-- 							</tr> -->
+							<tr>
+								<th scope="row">Lastest version</th>
+								<td>1.0</td>
+							</tr>
+							<tr>
+								<th scope="row">Latest release date</th>
+<!-- 								<td><span th:text="${asset.prublicationDate}"></span></td> -->
+								<td><p>Date: <input type="hidden" th:value="${asset.prublicationDate}" name="prublicationDate"/>
+								<span th:text="${asset.prublicationDate}"></span>
+								</p> </td>
+							</tr>
+							<tr>
+								<th scope="row">Category</th>
+<!-- 								<td><span th:text="${asset.category}"></span></td> -->
+									<td>
+									<p><input type="hidden" th:value="${asset.category}" name="category"/><span th:text="${asset.category}"></span></p> 
+									</td>
+							</tr>
+							<tr>
+								<th scope="row">Shipping Weight</th>
+<!-- 								<td><span th:text="${asset.shippingWeight}"></span> ounces</td> -->
+								<td>
+									<p><input type="hidden" th:value="${asset.shippingWeight}" name="shippingWeight"/>
+									<span th:text="${asset.shippingWeight}"></span>
+									</p> 
+									</td>
+							</tr>
+							<tr>
+								<th scope="row">Our Price</th>
+								<td>
+									<div class="col">
+										<h4 style="text-align: right;">
+<!-- 											<span style="color:#db3208;">$<span -->
+<!-- 													th:text="${asset.ourPrice}"></span> -->
+<!-- 												</span> -->
+ 											<input type="hidden" th:value="${asset.ourPrice}" name="ourPrice"/>
+ 											<span th:text="${asset.ourPrice}"></span>
+										</h4>
+										<p style="text-align: right;">
+											List Price:
+<!-- 											<span style="text-decoration:line-through">$<span -->
+<!-- 													th:text="${asset.listPrice}"></span> -->
+<!-- 												</span> -->
+											<input type="hidden" th:value="${asset.listPrice}" name="listPrice"/>
+											<span th:text="${asset.listPrice}"></span>
+										</p>
+										<p style="text-align: right;">
+											You save: $<span
+												th:text="${#numbers.formatDecimal((asset.listPrice - asset.ourPrice), 0, 'COMMA', 2, 'POINT' )}"></span>
+										</p>
+										<span>Qty: </span> <select style="text-align: right;"
+											name="qty">
+											<option th:each="qty : ${qtyList}" th:value="${qty}"
+												th:text="${qty}"></option>
+										</select>
+									</div>
+ 									<h4 th:if="*{asset.inStockNumber &gt; 10}" 
+										style="color: green; text-align: right;">In Stock</h4> 
+									<input type="hidden" th:value="${asset.inStockNumber}" name="inStockNumber"/>
+									</span>
+									<h4
+										th:if="*{asset.inStockNumber &lt; 10 and asset.inStockNumber &gt;0}"
+										style="color: green">
+										Only <span th:text="${asset.inStockNumber}"> </span> In Stock
+											<input type="hidden" th:value="${asset.inStockNumber}" name="inStockNumber"/>
+										
+										
+									</h4>
+									<h4 th:if="*{asset.inStockNumber==0}" style="color: darkred;">Unavailable</h4>
+									
+<!-- 									<button type="submit" class="btn btn-warning"	 -->
+<!-- 									style="color: black; border: 1px solid black; padding: 10px 40px 10px 40px;">Add -->
+<!-- 									to Cart</button> -->
+									<p><input type="submit" value="Submit" /> </p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"></th>
+								<td>
+									<center>
+										<img src="../images/payment.png" style="width: 350px;">
+									</center>
+								<td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	
+</form>
+
+	</div>
+
+
+	<footer th:replace="template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:replace="template :: header"></header>
+	
+		<div class="text-center" style="background-color:black; padding-top:20em; padding-bottom:100%;">
+			
+				<h3 class="text-danger" style="font-family:'INVASION2000';">
+					<span th:text="${error}"></span> - <span th:text="${status}"></span>
+				</h3>
+				
+					<img src="/images/error.png"  style="width:450px;"/>
+					<br>
+					<h4 style="color:white; font-family:'INVASION2000';">You have made a wrong request! </h4>
+					<br>
+					<button class="btn btn-success" onclick="goBack()" style="font-family:'INVASION2000';">Return</button>
+			
+		</div>
+	
+<footer th:replace="template :: footer"></footer>
+
+<script>
+	function goBack(){
+		window.history.back();
+	}
+</script>
+
+</body>
+</html>

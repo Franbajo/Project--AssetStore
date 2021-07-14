@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head">
+<meta charset="UTF-8">
+<title>Home</title>
+
+</head>
+<body>
+<header th:replace="template :: header"></header>
+
+
+
+	<main class="container">
+		<div class="row">
+			<div class="col">
+				<div class="carousel slide" id="slideshow" data-ride="carousel">
+					<!-- Slides -->
+					<div class="carousel-inner">
+							<div class="carousel-item active">
+									<img src="images/Slider1.png" alt="">
+							</div>
+							<div class="carousel-item ">
+									<img src="images/Slider2.png" alt="">
+							</div>
+							<div class="carousel-item">
+									<img src="images/Slider3.png" alt="">
+							</div>
+					</div>
+					<!-- Controladores -->
+							<a href="#slideshow" class="carousel-control-prev" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							</a>
+							<a href="#slideshow" class="carousel-control-next" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							</a>
+					<!-- Indicadores -->
+						<ol class="carousel-indicators">
+							<li data-target="#slideshow" data-slide-to="0" class="active"></li>
+							<li data-target="#slideshow" data-slide-to="1"></li>
+							<li data-target="#slideshow" data-slide-to="2"></li>
+						</ol>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+
+	<!-- <div class="container ">
+	<div class="row pt-1">
+		<div  class="col-xl4"></div>
+		<div id="logo" class="col-xl6 text-dark text-center" >
+				<img class="card-img-top" src="images/Logo_AssetsGameTek.png" width="200px" height="300px">
+			<hr>
+		</div>
+		
+	</div>-->
+	<!-- ..................PRODUCTOS..................... -->
+	<div class="row py-4">
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto1.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 1</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a th:href="@{/producto1}" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto2.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 2</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto3.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 3</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto4.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 4</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+						<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto5.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 5</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto6.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 6</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto7.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 7</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto8.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 8</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+	</div>
+
+	
+<!-- ..................PRODUCTOS..................... -->
+<!-- ..................PRODUCTOS DUPLICADOS..................... -->
+	<div class="row py-4">
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+				<img class="card-img-top" src="images/producto2.png" alt="">
+					
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 9</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto4.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 10</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+				<img class="card-img-top" src="images/producto7.png" alt="">
+					
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 11</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+	
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+				<img class="card-img-top" src="images/producto1.png" alt="">
+					
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 12</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a th:href="@{/producto1}" class="btn btn-sm btn-primary">Buy</a>
+							<a href="#" class="btn btn-sm btn-secondary">Details</a>
+						</div>
+				</div>
+			</div>
+						<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto5.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 13</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+				<img class="card-img-top" src="images/producto8.png" alt="">
+					
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 14</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto3.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 15</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3 mb-4">
+				<div class="card">
+					<img class="card-img-top" src="images/producto6.png" alt="">
+						<div class="card-body">
+							<h3 class="card-title text-dark">Producto 16</h3>
+							<p class="card-text text-dark">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+							<a href="#" class="btn btn-sm btn-primary">Details</a>
+						</div>
+				</div>
+			</div>
+	</div>
+
+	
+
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

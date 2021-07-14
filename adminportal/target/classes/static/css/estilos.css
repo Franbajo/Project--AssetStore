@@ -1,0 +1,97 @@
+
+
+
+.fm-nav a:hover{
+	background: rgba(255,255,255,.1);  /*El :hover sirve para que al pasar el ratón se ilumine el icono de la web*/
+}
+
+.contenedor{
+
+	margin-bottom:20px;
+	background:#dadada;
+	color:#ffffff;	
+
+}
+.contenedor div{  		/*Este conetenedor es para los estilos de los divs hijos de aquel que tenga la clase contenedor*/
+	background: #4f5ef5;
+	padding:20px;
+	border: 1px solid rgba(255,255,255,.25);
+}
+
+.contenedor2{
+
+	margin-bottom:20px;
+	background:#dadada;
+	color:#ffffff;	
+	height:200px;
+}
+.contenedor2 div{  		/*Este conetenedor es para los estilos de los divs hijos de aquel que tenga la clase contenedor*/
+	background: #4f5ef5;
+	padding:20px;
+	border: 1px solid rgba(255,255,255,.25);
+}
+
+body{
+	padding-top:56px;
+
+}
+
+p{
+	margin-bottom:0;
+}
+
+.contenedor3 {
+	background:#636585;
+	margin-top:20px;
+	padding:20px;
+	
+}
+main article{
+	color:#000;
+	background:#fff;
+	padding:20px;
+}
+main article p{
+ margin-bottom:20px;
+}
+
+aside{
+	background:#7aa54c;
+	padding:40px 20px;
+	text-align:center;
+	
+}
+
+.widgets .widget{
+	background:#4f5ef5;
+	padding: 40px 20px;
+	text-align:center;
+	
+}
+
+.footer2{
+	background: #232532;
+	padding:20px;
+	margin-top: 20px;
+	margin-bottom:20px;
+}
+
+
+.columna{
+	background: #2191fb;
+	color:#fff;
+	padding:20px;
+	margin-bottom:20px;
+}
+.columna2{
+	background: #ff9900;
+	color:#000000;
+	padding:20px;
+	margin-bottom:20px;
+}
+.columna3{
+	background: #fc1b1b;
+	color:#000000;
+	padding:20px;
+	margin-bottom:20px;
+}

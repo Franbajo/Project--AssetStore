@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="template :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:replace="template :: header"></header>
+
+	<div class="container" style="padding-top:3em; margin-bottom:5em;">
+<!-- 		<div class="col" style="padding-top:7em;"> -->
+<!-- 			<h2 class="section-headLine"> -->
+<!-- 				<h2 class="section-headLine"> -->
+<!-- 						<span th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Assets'"></span> -->
+<!-- 				</h2> -->
+<!-- 			</h2> -->
+<!-- 		</div> -->
+		<hr class="animated bounceInDown" style="width: 100%; height: 2px; background-color: #333;">
+
+
+		<div class="row">
+			<div class="col">
+				<div class="row  animated bounceInLeft">
+					<div class="col-12 col-md-6 text-left">
+						<a class="btn btn-warning" th:href="@{/assetshelf}">Continue
+							Shopping</a>
+					</div>
+					<div class="col-12 col-md-6 text-right">
+						<a class="btn btn-primary"
+							th:href="@{/checkout(id=${shoppingCart.id})}">Check Out</a>
+					</div>
+					<br />
+					<div th:if="${notEnoughStock}" class="alert alert-warning">
+						Oops, some of the products don't have enough stock. Please update
+						product quantity.</div>
+					<div th:if="${emptyCart}" class="alert alert-warning">Oops,
+						your cart is empty. See if you can find what you like in the
+						bookshelf and add them to cart.</div>
+				</div>
+					<br /> <br />
+					<div class="row animated bounceInUp">
+						<div class="col-12 col-md-4">
+							<h4 style="margin-left:70px;">Products</h4>
+						</div>
+						<div class="col-12 col-md-4">
+							<center><h4>Price</h4></center>
+						</div>
+						<div class="col-12 col-md-4">
+							<center><h4>Qty</h4></center>
+						</div>
+					</div>
+			<!-- .........................SEPARADOR................................ -->
+			<hr style="border: 0;
+					height: 1px;
+					background: #333;
+					background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+					background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+					background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+					background-image: -o-linear-gradient(left, #ccc, #333, #ccc);">
+			<!-- .................................................................. -->
+					<!--**************** display products in cart ****************-->
+	<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+ 	<div  class=" animated bounceInUp"style="height:100%;border-width:120;
+ 			background-color:rgba(230, 230, 230, 1); 
+ 			margin-top:1em; position:static; 
+ 			padding:1em;  width: 100%; 
+ 			border: 3px solid black;"> 
+					<div class="row"  th:each="cartItem : ${cartItemList}">
+	
+					
+							
+							<div class="col-12 col-md-4">
+								<a th:href="@{assetDetail(id=${cartItem.asset.id})}"> 
+								
+								<img
+									style="width:170px;"
+									class="img-responsive shelf-book center-block"
+									th:src="#{adminPath}+@{/images/asset/}+${cartItem.asset.id}+'.png'" />
+								</a>
+								<!-- "#{adminPath}+@{/images/asset/}+${asset.id}+'.png'" -->
+								<a th:href="@{'/assetDetail?id=}+${cartItem.asset.id}"><h4 th:text="${cartItem.asset.title}"></h4></a> 
+															<p th:if="${cartItem.asset.inStockNumber&gt;10}"
+									style="color: green;">In Stock</p>
+								<p
+									th:if="${cartItem.asset.inStockNumber&lt;10 and cartItem.asset.inStockNumber&gt;0}"
+									style="color: green;">
+									Only <span th:text="${cartItem.asset.inStockNumber}"></span> In
+									Stock
+								</p>
+								<p th:if="${cartItem.asset.inStockNumber==0}"
+									style="color: darkred;">Product Unavailable</p>
+								<a th:href="@{/removeItemCart/}+${cartItem.id}">delete</a>
+							
+							</div>
+
+							<div class="col-12 col-md-4">
+								<center><h5 style="color: #db3208; font-size: large;">
+									$<span th:text="${cartItem.asset.ourPrice}"
+										th:style="${cartItem.asset.inStockNumber}==0? 'text-decoration: line-through' : ''"></span>
+								</h5></center>
+							</div>
+
+							<div class="col-12 col-md-4">
+								<input hidden="hidden" name="id" th:value="${cartItem.id}" /> <input
+									th:id="${cartItem.id}" th:name="qty" th:disabled="${cartItem.asset.inStockNumber==0}" class="form-control cartItemQty" th:value="${cartItem.qty}" />
+								<button style="display: none;"
+									th:id="'update-item-'+${cartItem.id}" type="submit"
+									class="btn btn-warning btn-xs">Update</button>
+							</div>
+
+					</div>
+			</div>
+			<!-- .........................SEPARADOR................................ -->
+				<hr class="animated bounceInUp" style="border: 0;
+						height: 1px;
+						background: #333;
+						background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+						background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+						background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+						background-image: -o-linear-gradient(left, #ccc, #333, #ccc);"
+						>
+			<!-- .................................................................. -->
+		</form>
+					<div class="row animated bounceInUp">
+					
+						<hr/>
+						<div class="col text-right">
+						
+							<h4 >
+							<div  style="height:100%;border-width:120;background-color:rgba(230, 230, 230, 1); margin-top:1em; position:static; padding:1em;  width: 100%; border: 3px solid black;"> 
+								<strong style="font-size: large;">Total Price (<span
+									th:text="${#lists.size(cartItemList)}"></span> items):
+								</strong> <span style="color: #db3208; font-szie: large;">$<span
+									th:text="${shoppingCart.grandTotal}"></span></span>
+									</div>
+							</h4>
+						
+						</div>
+					
+					</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>
